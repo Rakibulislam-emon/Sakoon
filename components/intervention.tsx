@@ -99,16 +99,17 @@ export function Intervention({ emotion, onReset }: InterventionProps) {
   // Keep phaseRef in sync
   useEffect(() => { phaseRef.current = phase; }, [phase]);
 
-  // Cleanup on unmount
+  // Create ONE persistent audio element on mount — reusing it across verses
+  // preserves the browser's autoplay permission (user-activated state).
   useEffect(() => {
     mountedRef.current = true;
+    const audio = new Audio();
+    audioRef.current = audio;
     return () => {
       mountedRef.current = false;
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.src = "";
-        audioRef.current = null;
-      }
+      audio.pause();
+      audio.src = "";
+      audioRef.current = null;
     };
   }, []);
 
@@ -145,28 +146,28 @@ export function Intervention({ emotion, onReset }: InterventionProps) {
   }, [phase, isRoutine]);
 
   // ── Phase 2: Reading — setup + autoplay audio ──
+  // We REUSE the single persistent audio element (created on mount) by changing
+  // its src. This preserves the browser's user-activated autoplay permission
+  // across all verses — creating new Audio() objects breaks autoplay on mobile.
   useEffect(() => {
     if (phase !== "reading" || !data) return;
 
     const verse = data.verses[currentVerseIndex];
     if (!verse?.audioUrl) return;
 
-    // Tear down previous audio
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.onended      = null;
-      audioRef.current.onerror      = null;
-      audioRef.current.onloadedmetadata = null;
-      audioRef.current.src          = "";
-    }
+    const audio = audioRef.current;
+    if (!audio) return;
 
-    const audio = new Audio();
+    // Stop current playback and clear handlers
+    audio.pause();
+    audio.onended           = null;
+    audio.onerror           = null;
+    audio.onloadedmetadata  = null;
 
     audio.onloadedmetadata = () => {
       if (isFinite(audio.duration) && audio.duration > 0) {
         setAudioDuration(audio.duration);
       }
-      // else keep previous/fallback value
     };
 
     audio.onended = () => {
@@ -180,12 +181,13 @@ export function Intervention({ emotion, onReset }: InterventionProps) {
       console.warn("[Intervention] audio error, skipping verse");
       if (mountedRef.current) {
         setIsPlaying(false);
-        setPhase("post_reading_pause"); // gracefully skip
+        setPhase("post_reading_pause");
       }
     };
 
+    // Swap src and reload — this is the key: same element, new source
     audio.src = verse.audioUrl;
-    audioRef.current = audio;
+    audio.load();
 
     const t = setTimeout(() => {
       if (!mountedRef.current || phaseRef.current !== "reading") return;
@@ -198,10 +200,7 @@ export function Intervention({ emotion, onReset }: InterventionProps) {
         });
     }, 100);
 
-    return () => {
-      clearTimeout(t);
-      // Don't destroy audio here — it lives until next verse or unmount
-    };
+    return () => { clearTimeout(t); };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase, currentVerseIndex]); // data is stable after fetch; intentional
 
@@ -211,7 +210,8 @@ export function Intervention({ emotion, onReset }: InterventionProps) {
     if (phase !== "post_reading_pause" || !data) return;
 
     const isLastVerse = currentVerseIndex === data.verses.length - 1;
-    const waitTime    = isLastVerse ? 4000 : 2000;
+    // Reduced timings: 600ms between verses, 1500ms after the last verse
+    const waitTime    = isLastVerse ? 1500 : 600;
 
     const t = setTimeout(() => {
       if (!mountedRef.current) return;
