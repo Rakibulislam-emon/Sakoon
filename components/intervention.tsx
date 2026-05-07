@@ -140,7 +140,7 @@ export function Intervention({ emotion, onReset }: InterventionProps) {
         setInnerPageIndex(0);
         setPhase(isRoutine ? "action" : "reading");
       }
-    }, 3000);
+    }, 2200);
     return () => clearTimeout(t);
   }, [phase, isRoutine]);
 
@@ -196,7 +196,7 @@ export function Intervention({ emotion, onReset }: InterventionProps) {
           console.warn("[Intervention] autoplay blocked:", e);
           // show play button — user must tap
         });
-    }, 500);
+    }, 100);
 
     return () => {
       clearTimeout(t);
@@ -211,7 +211,7 @@ export function Intervention({ emotion, onReset }: InterventionProps) {
     if (phase !== "post_reading_pause" || !data) return;
 
     const isLastVerse = currentVerseIndex === data.verses.length - 1;
-    const waitTime    = isLastVerse ? 7000 : 4000;
+    const waitTime    = isLastVerse ? 4000 : 2000;
 
     const t = setTimeout(() => {
       if (!mountedRef.current) return;

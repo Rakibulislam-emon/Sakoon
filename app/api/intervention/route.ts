@@ -34,11 +34,14 @@ export async function GET(request: Request) {
       const banglaData = json.data[1];
       const audioData = json.data[2];
 
+      // Force HTTPS on audio URL — http:// URLs are blocked by mobile carriers (mixed content)
+      const secureAudioUrl = (audioData.audio as string).replace(/^http:\/\//i, 'https://');
+
       verses.push({
         ayahId: ayahId,
         arabic: arabicData.text,
         translation: banglaData.text,
-        audioUrl: audioData.audio,
+        audioUrl: secureAudioUrl,
         surahName: arabicData.surah.name,
         surahEnglishName: arabicData.surah.englishName,
         numberInSurah: arabicData.numberInSurah
