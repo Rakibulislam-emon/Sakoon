@@ -262,3 +262,51 @@ export const emotionsList = [
   { id: 'stress', label: 'Stress / Hardship' },
   { id: 'anger', label: 'Anger' },
 ] as const;
+
+export const personalNotes: Record<EmotionId, string[]> = {
+  morning: [
+    "A new day is a blank canvas. Start it with Bismillah.",
+    "The morning breeze is a reminder of His endless mercy. Have a beautiful day.",
+    "Whatever today brings, you are not alone. Allah is with you."
+  ],
+  night: [
+    "You survived today. Now let your soul rest in His care.",
+    "Forgive those who hurt you, and sleep with a clean heart.",
+    "Tomorrow is a fresh start. Leave your worries to Al-Wakeel."
+  ],
+  anxiety: [
+    "I know everything feels overwhelming right now. Please take a deep breath. This storm will pass.",
+    "You have survived 100% of your worst days so far. You are much stronger than your anxiety makes you believe.",
+    "Don't fight the panic. Let it wash over you like a wave. Allah is Al-Hafeez, you are safe."
+  ],
+  sadness: [
+    "Tears are just prayers that travel to God when we can't speak. Let them flow, and let yourself heal.",
+    "It's okay to not be okay today. Allow yourself to feel this sadness without any guilt. You are wrapped in His mercy.",
+    "Your pain is seen by Ar-Rahman. Every tear you shed is washing away a sin. Peace is coming."
+  ],
+  overthinking: [
+    "Your mind is racing, but the future is already written by the Best of Planners. You can rest now.",
+    "Overthinking is trying to control the uncontrollable. Surrender it to Him.",
+    "Focus on this very moment. Inhale. Exhale. The rest is in God's hands."
+  ],
+  guilt: [
+    "His mercy is greater than your sins. Don't let Shaytan convince you otherwise.",
+    "The fact that you feel guilty is a sign of a pure heart. Turn to Him, He loves to forgive.",
+    "A sin that breaks your heart and turns you to Allah is better than a good deed that makes you arrogant."
+  ],
+  emptiness: [
+    "It's completely okay to feel empty sometimes. You don't have to figure everything out today. Just breathe.",
+    "Don't rush to fill the void inside you. Give yourself time to heal. Allah is listening even when you are silent.",
+    "This emptiness is just a pause, not your final destination. Better days are coming, Insha'Allah."
+  ],
+  stress: [
+    "I know the burden feels heavy right now. But Allah never burdens a soul beyond what it can bear.",
+    "Take it one step at a time, one day at a time. You will get through this.",
+    "When you feel like you're drowning, remember who controls the ocean. Relief is near."
+  ],
+  anger: [
+    "Swallow the anger. It tastes bitter now, but it brings sweetness in the Hereafter.",
+    "Don't let a moment of anger destroy a lifetime of peace. Breathe and seek refuge in Him.",
+    "Forgive, not because they deserve it, but because you deserve peace."
+  ]
+};
