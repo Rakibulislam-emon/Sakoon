@@ -36,6 +36,38 @@ export const emotionsData: Record<EmotionId, SessionMapping[]> = {
         completionPause: "Feel the Barakah of the morning.",
         endMessage: "Your day is protected."
       }
+    },
+    {
+      sessionId: 'mrn_session_2',
+      verseIds: ['59:22', '59:23', '59:24'],
+      action: {
+        type: 'Istighfar',
+        arabic: 'اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ خَلَقْتَنِي وَأَنَا عَبْدُكَ وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ',
+        bangla: 'আল্লাহুম্মা আনতা রাব্বি লা ইলাহা ইল্লা আনতা খালাক্বতানি ওয়া আনা আবদুকা ওয়া আনা আলা আহদিকা ওয়া ওয়া’দিকা মাসতাত্বাতু আউজু বিকা মিন শাররি মা সানাতু আবুউ লাকা বিনি’মাতিকা আলাইয়্যা ওয়া আবুউ বিজাম্বি ফাগফিরলি ফাইন্নাহু লা ইয়াগফিরুজ জুনুবা ইল্লা আনতা',
+        meaning: 'হে আল্লাহ! আপনি আমার রব, আপনি ছাড়া আর কোনো ইলাহ নেই। আপনি আমাকে সৃষ্টি করেছেন এবং আমি আপনার বান্দা। আমি আমার সাধ্যমতো আপনার প্রতিশ্রুতি ও অঙ্গীকারের ওপর আছি। আমি আমার কৃতকর্মের অনিষ্ট থেকে আপনার আশ্রয় চাই। আমার ওপর আপনার যে নেয়ামত আছে তার স্বীকৃতি দিচ্ছি এবং আমার পাপও স্বীকার করছি। অতএব, আপনি আমাকে ক্ষমা করুন। নিশ্চয়ই আপনি ছাড়া আর কেউ পাপ ক্ষমা করতে পারে না।',
+        count: 1
+      },
+      messages: {
+        actionPrompt: "Seek forgiveness with the Chief of Istighfar.",
+        completionPause: "Feel the purity of a clean slate.",
+        endMessage: "A fresh start to your day."
+      }
+    },
+    {
+      sessionId: 'mrn_session_3',
+      verseIds: ['40:1', '40:2', '40:3'],
+      action: {
+        type: 'Dua',
+        arabic: 'بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ',
+        bangla: 'বিসমিল্লাহিল্লাজি লা ইয়াদুররু মায়াসমিহি শাইয়ুন ফিল আরদ্বি ওয়ালা ফিস সামায়ি ওয়া হুয়াস সামিউল আলিম',
+        meaning: 'সেই আল্লাহর নামে যাঁর নামের বরকতে আসমান ও জমিনের কোনো কিছুই কোনো ক্ষতি করতে পারে না। এবং তিনি সর্বশ্রোতা ও সর্বজ্ঞ।',
+        count: 3
+      },
+      messages: {
+        actionPrompt: "Seal your day with His Protection.",
+        completionPause: "You are shielded from all harm.",
+        endMessage: "Step into the world securely."
+      }
     }
   ],
   night: [
@@ -53,6 +85,38 @@ export const emotionsData: Record<EmotionId, SessionMapping[]> = {
         actionPrompt: "Wash away the fatigue of the day",
         completionPause: "Trust Allah with your worries.",
         endMessage: "Rest peacefully, you are in His care."
+      }
+    },
+    {
+      sessionId: 'ngt_session_2',
+      verseIds: ['2:285', '2:286'],
+      action: {
+        type: 'Dua',
+        arabic: 'بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا',
+        bangla: 'বিসমিকা আল্লাহুম্মা আমুতু ওয়া আহইয়া',
+        meaning: 'হে আল্লাহ! আপনার নাম নিয়েই আমি মৃত্যুবরণ করছি (ঘুমাচ্ছি) এবং আপনার নাম নিয়েই আমি পুনর্জীবিত (জাগ্রত) হবো।',
+        count: 1
+      },
+      messages: {
+        actionPrompt: "Submit your soul to the Creator of the night.",
+        completionPause: "Embrace the tranquility of sleep.",
+        endMessage: "May His Angels guard your rest."
+      }
+    },
+    {
+      sessionId: 'ngt_session_3',
+      verseIds: ['32:1', '32:2', '32:3', '32:4', '32:5'],
+      action: {
+        type: 'Dua',
+        arabic: 'اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ',
+        bangla: 'আল্লাহুম্মা ক্বিনি আযাবাকা ইয়াওমা তাবয়াছু ইবাদাকা',
+        meaning: 'হে আল্লাহ! যেদিন আপনি আপনার বান্দাদের পুনরুত্থিত করবেন, সেদিন আমাকে আপনার আযাব থেকে রক্ষা করুন।',
+        count: 3
+      },
+      messages: {
+        actionPrompt: "Seek His ultimate protection from the Fire.",
+        completionPause: "Safety is granted to those who ask.",
+        endMessage: "Sleep with the peace of His mercy."
       }
     }
   ],
@@ -99,7 +163,7 @@ export const emotionsData: Record<EmotionId, SessionMapping[]> = {
       action: {
         type: 'Dhikr',
         arabic: 'لَا إِلٰهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ',
-        bangla: 'লা ইলাহা ইল্লা আনতা সুবহানাকা ইন্নি কুনতু মিনাজ জোয়ালিমিন',
+        bangla: 'লা ইলাহা ইল্লা আনতা সুবহানাকা ইন্নি কুনতু মিনাজ যালিমিন',
         meaning: 'আপনি ছাড়া কোনো ইলাহ নেই, আপনি পবিত্র। নিশ্চয়ই আমি জালিমদের অন্তর্ভুক্ত।',
         count: 21
       },
