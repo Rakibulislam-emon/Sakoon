@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { EmotionId, emotionsData } from '@/lib/emotions';
+import { EmotionId, emotionsData, personalNotes } from '@/lib/emotions';
 
 export const dynamic = 'force-dynamic';
 
@@ -48,11 +48,16 @@ export async function GET(request: Request) {
       });
     }
 
+    // Select a random personal note for this emotion
+    const notes = personalNotes[emotion];
+    const personalNote = notes ? notes[Math.floor(Math.random() * notes.length)] : null;
+
     return NextResponse.json({
       sessionId: selectedSession.sessionId,
       action: selectedSession.action,
       messages: selectedSession.messages,
-      verses: verses
+      verses: verses,
+      personalNote: personalNote
     });
   } catch (error) {
     console.error('Error fetching Quran data:', error);

@@ -25,6 +25,7 @@ interface SessionData {
     completionPause: string;
     endMessage: string;
   };
+  personalNote?: string;
 }
 
 interface InterventionProps {
@@ -640,6 +641,17 @@ export function Intervention({ emotion, onReset }: InterventionProps) {
                 {data?.messages?.endMessage}
               </h2>
               <div className="h-0.5 w-12 bg-cyan-500/40 mx-auto rounded-full" />
+              
+              {data?.personalNote && (
+                <motion.p 
+                  initial={{ opacity: 0 }} 
+                  animate={{ opacity: 1 }} 
+                  transition={{ delay: 1.5, duration: 2 }}
+                  className="text-lg md:text-xl text-slate-300/80 font-light max-w-xl mx-auto italic pt-8 leading-relaxed"
+                >
+                  &quot;{data.personalNote}&quot;
+                </motion.p>
+              )}
             </div>
 
             <Button
